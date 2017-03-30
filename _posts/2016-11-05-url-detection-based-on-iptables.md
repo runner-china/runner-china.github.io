@@ -22,6 +22,8 @@ tags:
 # 0x01 实验环境的网络拓扑
 实验环境只需要一台笔记本电脑；由这台由物理计算机利用VMware Workstation虚拟机软件虚拟出2台虚拟机：VM1、VM2。其中，VM2是用户上网系统，VM1为VM2的Linux网关，实现数据包正常转发、恶意URL阻断、告警页面跳转等功能。宿主机（Host Machine）的无线网卡可以访问互联网，它与VM1之间通过VMware NAT模式进行网络通讯，即保证了VM1也能访问互联网。  
 
+
+<!--more-->
 # 0x02 网络的基础配置
 
 1. VMware网络配置。按照图里面的说明，分别配置子网VMnet 8（192.168.111.0）和VMnet9（192.168.112.0）；
@@ -29,17 +31,17 @@ tags:
 1. 禁用firewalld服务
 1. 虚拟机网卡配置。按照图里面的说明，分别配置VM1的两张网卡和VM2的一张网卡的网络设置。
 1. VM1开启IP forward
-2. 
+
 # 0x03 Netfilter/iptables配置
 ## 启用Netfilter/iptables
 CentOS 7.0默认使用的是firewall作为防火墙，需改为iptables防火墙
 
-    systemctl stop firewalld.service #停止firewall
-    systemctl disable firewalld.service #禁止firewall开机启动
-    firewall-cmd --state #查看默认防火墙状态
-    yum install iptables-services #安装iptables
-    systemctl start iptables.service #启动iptables使配置生效
-    systemctl enable iptables.service #设置iptables开机启动
+    systemctl stop firewalld.service //停止firewall
+    systemctl disable firewalld.service //禁止firewall开机启动
+    firewall-cmd --state //查看默认防火墙状态
+    yum install iptables-services //安装iptables
+    systemctl start iptables.service //启动iptables使配置生效
+    systemctl enable iptables.service //设置iptables开机启动
 
 ## 启用SNAT功能（nat table, POSTROUTING  chain）
 使VMnet 9 能够访问公网
@@ -69,14 +71,14 @@ CentOS 7.0默认使用的是firewall作为防火墙，需改为iptables防火墙
 
 # 0x05 测试案例
 这里假设www.baidu.com为恶意网站, 对恶意用例与正常用例分别进行测试。
-##恶意用例
+## 恶意用例
 - http://www.baidu.com（百度的http）
 - https://www.baidu.com（百度的https） 
 - http://t.cn/h5mwx （百度的短网址）
 - 6.6.6.6  （假定恶意IP）
 
 
-##正常用例
+## 正常用例
 - www.taobao.com
 - https://www.jd.com/
 - http://t.cn/hczXq  （腾讯的短网址）
