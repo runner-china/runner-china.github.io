@@ -2,14 +2,13 @@
 author: runner
 date: 2016-11-05 11:51+08:00
 layout: post
-title: "用Iptables实现屏蔽恶意的IP和URL"
+title: "用Iptables实现网关屏蔽恶意IP和URL"
 description: ""
 comments : true
 categories:
 - 技术
 tags:
 - Linux
-- URL
 - iptables
 ---
 
@@ -21,7 +20,7 @@ tags:
 
 # 0x01 实验环境的网络拓扑
 实验环境只需要一台笔记本电脑；由这台由物理计算机利用VMware Workstation虚拟机软件虚拟出2台虚拟机：VM1、VM2。其中，VM2是用户上网系统，VM1为VM2的Linux网关，实现数据包正常转发、恶意URL阻断、告警页面跳转等功能。宿主机（Host Machine）的无线网卡可以访问互联网，它与VM1之间通过VMware NAT模式进行网络通讯，即保证了VM1也能访问互联网。  
-
+![](16110501.jpg)
 
 <!--more-->
 # 0x02 网络的基础配置
@@ -31,6 +30,9 @@ tags:
 1. 禁用firewalld服务
 1. 虚拟机网卡配置。按照图里面的说明，分别配置VM1的两张网卡和VM2的一张网卡的网络设置。
 1. VM1开启IP forward
+![](16110501.jpg)
+![](16110502.jpg)
+![](16110503.jpg)
 
 # 0x03 Netfilter/iptables配置
 ## 启用Netfilter/iptables
@@ -67,7 +69,7 @@ CentOS 7.0默认使用的是firewall作为防火墙，需改为iptables防火墙
 
 
 # 0x04 Apache配置
-在VM1的系统上安装Apache服务器，并存放告警页面。
+在VM1的系统上安装Apache服务器，配置Web目录存放告警页面。
 
 # 0x05 测试案例
 这里假设www.baidu.com为恶意网站, 对恶意用例与正常用例分别进行测试。
