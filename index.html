@@ -1,0 +1,76 @@
+---
+layout: master
+title: Home
+description: Running in China
+---
+
+<div class="container">
+
+	<header class="row">
+	  <div class="col-sm-6 col-md-12" style="margin-top:25px;margin-bottom:25px">
+	    <h1 id="pin" >{{site.title}}</h1>
+	  </div>
+	</header>
+    
+	<nav>
+    
+		<div class="row" style="margin-top:25px">
+ 			<div class="col-md-4 col-sm-6 col-xs-12">
+				<a href="about/">
+					<div class="tile purple profile bord">
+						<h2 class="title">About Me</h2>
+						<p>printf("Hello World, I am a runner.")</p>
+					</div>
+				</a>
+		    </div>
+            
+			<div class="col-md-2 col-sm-3 col-xs-6">
+				<a href="resume/" title="Resume" class="tile red bord icon-resume"></a>
+			</div>
+            
+			<div class="col-md-2 col-sm-3 col-xs-6">
+				<div class="live-tile" data-mode="flip" data-delay="4000">
+					<div>
+						<a href="blog/" title="Blog" class="tile orange bord icon-blog"></a>
+					</div>
+					<div>
+						<a href="blog/" title="Blog" class="tile orange bord font-fix">
+						<p>Blog Section:</p>
+							<ol>
+								<li>Posts</li>
+								<li>News</li>
+							</ol>
+						</a>
+					</div>
+				</div>
+			</div>            
+		</div>
+
+		<div class="row">
+		<div >	
+			<div class="col-md-4 col-sm-6 col-xs-12">
+				{% for post in site.posts offset:1 limit:1 %}
+				<a href="{{post.url}}">
+					<div class="tile green bord">
+						<h3 class="title">Recent Article</h3>
+						<h4 class="title">{{ post.title }}</h4>
+					</div>
+				</a>
+				{% endfor %}
+			</div>
+		</div>	        
+			<div class="col-md-4 col-sm-6 col-xs-12">
+				{% for post in site.posts limit:1 %}
+				<a href="{{post.url}}">
+					<div class="tile blue bord">
+						<h3 class="title">Latest Article</h3>
+						<h4 class="title">{{ post.title }}</h4>
+					</div>
+				</a>
+				{% endfor %}
+			</div>
+		</div>
+        
+        
+	</nav>
+</div>

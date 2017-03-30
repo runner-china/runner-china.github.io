@@ -1,0 +1,50 @@
+# Configurations
+markdown: kramdown
+markdown_ext:  markdown,mkdown,mkdn,mkd,md
+highlighter: rouge
+
+# Permalinks
+permalink:        /blog/:year/:month/:day/:title
+
+
+# Themes are encouraged to use these universal variables 
+# so be sure to set them if your theme uses them.
+#
+title : Running Time
+tagline: Blog
+description:      'Running in China'
+
+
+# Navigation
+navigation:
+- text: Blog
+  url: /blog/
+- text: Archive
+  url : /archive/
+- text: Tags
+  url: /tags/
+- text: Resume
+  url: /resume/
+- text: About
+  url: /about/
+
+
+
+# Author Details
+author:         'runner-china'
+linkedin:       ''
+twitter:        ''
+facebook:       ''
+gplus:          ''
+
+
+# Disqus
+disqushandler: 'runner-china'
+
+# Blog Configurations
+paginate: 3 # Posts per page on the blog index
+paginate_path: '/blog/page:num'
+destination: ./_site
+
+# Custom vars
+version:          0.7.8
