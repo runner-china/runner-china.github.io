@@ -20,7 +20,7 @@ tags:
 
 # 0x01 实验环境的网络拓扑
 实验环境只需要一台笔记本电脑；由这台由物理计算机利用VMware Workstation虚拟机软件虚拟出2台虚拟机：VM1、VM2。其中，VM2是用户上网系统，VM1为VM2的Linux网关，实现数据包正常转发、恶意URL阻断、告警页面跳转等功能。宿主机（Host Machine）的无线网卡可以访问互联网，它与VM1之间通过VMware NAT模式进行网络通讯，即保证了VM1也能访问互联网。  
-![](16110501.jpg)
+![](/blog/images/16110501.jpg)
 
 <!--more-->
 # 0x02 网络环境的配置
@@ -31,8 +31,8 @@ tags:
 1. VM1需要开启IP forward功能
 1. 测试网络的环境能够正常通信
 
-![](16110502.jpg)
-![](16110503.jpg)
+![](/blog/images/16110502.jpg)
+![](/blog/images/16110503.jpg)
 
 # 0x03 Netfilter/iptables配置
 ## 启用Netfilter/iptables
