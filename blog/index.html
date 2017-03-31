@@ -35,7 +35,7 @@ bloghome: true
             <div class="row">
               <div class="col-sm-6 col-xs-6 text-left">
                   {% if paginator.next_page %}
-                    <a class="btn btn-orange" href="https://{{paginator.next_page_path}}">← Older1</a>
+                    <a class="btn btn-orange" href="{{paginator.next_page_path}}">← Older1</a>
                   {% else %}
                     <span class="btn btn-orange disabled">← Older</span>
                   {% endif %}
