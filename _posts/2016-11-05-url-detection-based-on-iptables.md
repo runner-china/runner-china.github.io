@@ -70,6 +70,8 @@ CentOS 7.0默认使用的是firewall作为防火墙，需改为iptables防火墙
 
 # 0x04 Apache配置
 在VM1的系统上安装Apache服务器，配置Web目录存放告警页面。
+![](/blog/images/16110504.jpg)
+
 
 # 0x05 测试案例
 这里假设www.baidu.com为恶意网站, 对恶意用例与正常用例分别进行测试。
