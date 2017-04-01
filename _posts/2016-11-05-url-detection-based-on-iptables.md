@@ -14,7 +14,7 @@ tags:
 
 
 # 0x00 前言
-**注：如需转载请注明出处**  
+
 
 经常存在这样一种应用场景，需要网关实现对一些恶意IP和URL屏蔽（如钓鱼网址），防止客户端访问。本文以此作为出发点，以Linux网关为例，利用Linux系统的netfilter/iptables实现屏蔽恶意IP和URL。
 
@@ -87,6 +87,7 @@ CentOS 7.0默认使用的是firewall作为防火墙，需改为iptables防火墙
 - https://www.jd.com/
 - http://t.cn/hczXq  （腾讯的短网址）
 
+**注：如需转载这篇文章请注明出处**  
 
 
 
