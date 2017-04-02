@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>杭州景点分布图</title>
+    <link rel="stylesheet" href="https://cache.amap.com/lbs/static/main1119.css"/>
+    <script src="https://webapi.amap.com/maps?v=1.3&key=a8d1810e31c76077a4d3f9487f003936"></script>
+    <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<div class="button-group">
+    <input type="button" class="button" value="自定义样式点聚合" id="add1"/>
+    <input type="button" class="button" value="默认样式点聚合" id="add0"/>
+</div>
+<script>
+    var cluster, markers = [];
+    var map = new AMap.Map("container", {
+        resizeEnable: true,
+        center:  [120.147871,30.245768],
+        zoom: 12
+    });
+
+    // 向地图添加标注点
+    var mapBounds = map.getBounds();
+    var sw = mapBounds.getSouthWest();
+    var ne = mapBounds.getNorthEast();
+    var lngSpan = Math.abs(sw.lng - ne.lng);
+    var latSpan = Math.abs(ne.lat - sw.lat);
+    
+    var count=87;//标注点的个数
+    var markerName=["西湖文化广场","浙江自然博物馆","浙江省科技馆","浙江环球中心","京杭大运河（武林门码头）","苏堤春晓（西湖十景之一）","曲院风荷（西湖十景之一）","平湖秋月（西湖十景之一）","断桥残雪（西湖十景之一）","柳浪闻莺（西湖十景之一）","花港观鱼（西湖十景之一）","雷峰夕照（西湖十景之一，雷峰塔夕照山）","双峰插云（西湖十景之一）","南屏晚钟（西湖十景之一，南屏山，净慈寺）","三潭印月（西湖十景之一）","北高峰","南高峰","白堤","涌金门","岳王庙","印象西湖","郭庄","竹素园","茅家埠","孤山","西冷印社","清波门","钱王祠","杭州碑林","太子湾公园","苏东坡馆","宝石山","保俶塔","黄龙洞","于谦祠","西湖音乐喷泉","杨公堤","万松书院","浙大玉泉校区","浙大紫金港校区","浙大之江校区","浙工大屏峰校区","中国美院象山校区","宋城","大清谷","梅家坞","云栖竹径","灵隐寺","杭州植物园","云松书舍","木兰山茶园","杭州花圃","西溪湿地","杭州图书馆","武林广场","虎跑公园","杭州中国茶叶博物馆","杭州动物园","杭州少年儿童公园（满陇桂雨公园）","八卦田遗址公园","杭州南宋官窑","钱塘江大桥","江洋畈生态公园","杭帮菜博物馆","白塔公园","玉皇飞云","良渚博物馆","杭州乐园","杭州极地海洋公园","杭州海底世界","白马湖","湘湖景区","龙井山园","龙井问茶","九溪烟树（九溪十八涧）","江墅铁路遗址","鼓楼","胡雪原故居","吴山夜市","杭州历史博物馆","杭州吴山天风（城隍阁）","清河坊街","胡庆余堂中药博物馆","南宋御街","吴山广场","吴山景区","六和塔"];
+    var markerPositionx = [120.163733,120.164715,120.164936,120.163026,120.162375,120.13796,120.135502,120.14612,120.151195,120.158,120.142121,120.148835,120.122683,120.149049,120.145409,120.096951,120.122664,120.148904,120.16055,120.134894,120.135126,120.131699,120.133779,120.124443,120.142752,120.139873,120.158066,120.159073,120.161912,120.142162,120.144127,120.144199,120.148096,120.138601,120.132279,120.16097,120.132725,120.161346,120.123077,120.092651,120.124947,120.038201,120.077697,120.098734,120.069079,120.086898,120.090875,120.1013,120.120463,120.122197,120.12504,120.131092,120.064926,120.208176,120.163277,120.132065,120.121135,120.133062,120.134387,120.151656,120.154928,120.139231,120.140324,120.14337,120.140437,120.151382,120.027971,120.244974,120.227804,120.155987,120.210206,120.214086,120.112497,120.119963,120.113387,120.143017,120.171347,120.172871,120.168205,120.16627,120.164936,120.169122,120.169116,120.171018,120.16385,120.16575,120.131496];    
+    var markerPositiony = [30.276818,30.277003,30.276404,30.277361,30.274106,30.24388,30.251182,30.252218,30.258105,30.239366,30.232194,30.231725,30.247553,30.228627,30.238695,30.246944,30.221249,30.255382,30.246372,30.25205,30.251451,30.243927,30.251806,30.238907,30.251897,30.25017,30.24037,30.24247,30.24177,30.225513,30.228923,30.266272,30.261189,30.264652,30.229788,30.253778,30.239887,30.227746,30.263842,30.305306,30.192421,30.226134,30.15507,30.169813,30.195021,30.202622,30.191801,30.241175,30.252756,30.247852,30.252552,30.246056,30.266938,30.246346,30.271347,30.209422,30.232826,30.212193,30.21603,30.209254,30.209102,30.193149,30.20662,30.207889,30.199073,30.218362,30.377365,30.160736,30.142627,30.234445,30.165173,30.130308,30.218997,30.231006,30.202469,30.313148,30.237935,30.237297,30.252988,30.238864,30.239598,30.239956,30.239807,30.241833,30.239251,30.234558,30.19609];     
+    
+    for (var i = 0; i < count; i++) {
+        var markerPosition=[markerPositionx[i],markerPositiony[i]];
+        var marker = new AMap.Marker({
+            position: markerPosition,
+            icon: "marker.png",
+            //offset: {x: -8,y: -34}
+        });
+        marker.setLabel({
+        offset: new AMap.Pixel(20, 20),
+        content: markerName[i]
+        });
+        markers.push(marker);
+    }
+    
+    
+    addCluster(0);
+
+    AMap.event.addDomListener(document.getElementById('add0'), 'click', function() {
+        addCluster(0);
+    });
+    AMap.event.addDomListener(document.getElementById('add1'), 'click', function() {
+        addCluster(1);
+    });
+
+    // 添加点聚合
+    function addCluster(tag) {
+        if (cluster) {
+            cluster.setMap(null);
+        }
+        if (tag == 1) {
+            var sts = [{
+                url: "http://a.amap.com/lbs/static/img/1102-1.png",
+                size: new AMap.Size(32, 32),
+                offset: new AMap.Pixel(-16, -30)
+            }, {
+                url: "http://a.amap.com/lbs/static/img/2.png",
+                size: new AMap.Size(32, 32),
+                offset: new AMap.Pixel(-16, -30)
+            }, {
+                url: "http://lbs.amap.com/wp-content/uploads/2014/06/3.png",
+                size: new AMap.Size(48, 48),
+                offset: new AMap.Pixel(-24, -45),
+                textColor: '#CC0066'
+            }];
+            map.plugin(["AMap.MarkerClusterer"], function() {
+                cluster = new AMap.MarkerClusterer(map, markers, {
+                    styles: sts
+                });
+            });
+        } else {
+            map.plugin(["AMap.MarkerClusterer"], function() {
+                cluster = new AMap.MarkerClusterer(map, markers);
+            });
+        }
+    }
+</script>
+</body>
+</html>
