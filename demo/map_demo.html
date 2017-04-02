@@ -12,8 +12,8 @@
 <body>
 <div id="container"></div>
 <div class="button-group">
-    <input type="button" class="button" value="自定义样式点聚合" id="add1"/>
-    <input type="button" class="button" value="默认样式点聚合" id="add0"/>
+    <input type="button" class="button" value="样式1" id="add1"/>
+    <input type="button" class="button" value="样式2" id="add0"/>
 </div>
 <script>
     var cluster, markers = [];
@@ -40,7 +40,7 @@
         var marker = new AMap.Marker({
             position: markerPosition,
             icon: "marker.png",
-            //offset: {x: -8,y: -34}
+            offset: {x: -11,y: -34}
         });
         marker.setLabel({
         offset: new AMap.Pixel(20, 20),
