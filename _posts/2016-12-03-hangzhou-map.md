@@ -30,14 +30,14 @@ tags:
     柳浪闻莺（西湖十景之一）	120.158,30.239366
     花港观鱼（西湖十景之一）	120.142121,30.232194
     三潭印月（西湖十景之一）	120.145409,30.238695
-
+<!--more-->
 # 0x02 高德地图API
 
-因为要做成Web的形式，所以这里用的是[JavaScript API](http://lbs.amap.com/api/javascript-api/summary)。按照官网介绍的流程，首先注册高德开发者、控制台创建应用、获取Key。然后开始学习示例程序的代码，掌握基本点标注、点聚合等基本方法。最后实现的效果如下:  
+因为要做成Web的形式，所以这里用的是[JavaScript API](http://lbs.amap.com/api/javascript-api/summary)。按照官网介绍的流程，首先注册高德开发者、控制台创建应用、获取Key。然后开始学习示例程序的代码，掌握基本点标注、点聚合等基本方法。在导入景点名称与地理信息后，最终实现的效果如下图:  
 
 ![](/blog/images/17040301.png)  
 
-[点击这里](https://runner-china.github.io/demo/map_demo.html)还可以查看在线演示版本。
+查看在线演示版本：[点击这里](https://runner-china.github.io/demo/map_demo.html)。
 
 # 0x03 效果分析
 - 快速了解景点地理信息：比如快速了解还存在哪些没去过的景点，它们的地理位置在哪里。
