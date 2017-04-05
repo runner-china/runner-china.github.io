@@ -2,7 +2,7 @@
 author: runner
 date: 2017-04-05 19:50+08:00
 layout: post
-title: "用Wireshark抓包分析youku网络视频并获得下载地址"
+title: "用Wireshark抓包分析获得优酷视频地址"
 description: ""
 comments : true
 categories:
