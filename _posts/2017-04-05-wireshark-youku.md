@@ -47,27 +47,27 @@ WireShark的常用功能有如下：
 
 ## 逻辑操作符：   
 
-- 与： and  &&	
-- 或： or  || 
-- 异或： xor  ^^ 
-- 非： not  !
+- 与： and
+- 或： or
+- 异或： xor
+- 非： not
 
 ## 常见的协议字段：
 
-- ip IP协议
-- ip.addr IP的源或目的地址
-- ip.dst IP目的地址
-- ip.src IP源地址
-- tcp TCP协议
-- tcp.port TCP的源或目的端口
-- tcp.srcport TCP源端口
-- tcp.dstport TCP目的端口
-- http HTTP协议 
-- http.request.method HTTP请求的方法
-- http.request.uri HTTP请求的URI
-- http.file_data HTTP的文件数据字段
-- http.host HTTP请求的HOST字段
-- http.user_agent HTTP请求的USER AGENT字段
+- ip： IP协议
+- ip.addr： IP的源或目的地址
+- ip.dst： IP目的地址
+- ip.src： IP源地址
+- tcp： TCP协议
+- tcp.port： TCP的源或目的端口
+- tcp.srcport： TCP源端口
+- tcp.dstport： TCP目的端口
+- http： HTTP协议 
+- http.request.method： HTTP请求的方法
+- http.request.uri： HTTP请求的URI
+- http.file_data： HTTP的文件数据字段
+- http.host： HTTP请求的HOST字段
+- http.user_agent： HTTP请求的USER AGENT字段
 
 # 0x03 HTTP抓包与分析
 
