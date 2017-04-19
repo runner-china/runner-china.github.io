@@ -13,10 +13,10 @@ tags:
 ![](/blog/images/17040601.jpg)
 # 0x00 前言
 
-网络调试当中经常需要用到一些命令行工具，其中较为著名的是cURL、Wget和Netcat三款跨平台工具。它们除了具有对网络通信进行分析之类的常规功能，甚至还有数据爬取、端口反弹等特殊功能，完全是居家旅行必备之良品。本文对cURL、Wget和Netcat三款工具的常见功能进行介绍，方便新手快速掌握这里命令行工具的基本选项与参数。
+网络调试当中经常需要用到一些命令行工具，其中较为著名的是[cURL](https://curl.haxx.se/)、[Wget](https://www.gnu.org/software/wget/)和[Netcat](http://nc110.sourceforge.net/)三款跨平台工具。它们除了具有对网络通信进行分析之类的常规功能，甚至还有数据爬取、端口反弹等特殊功能，完全是居家旅行必备之良品。本文对cURL、Wget和Netcat三款工具的常见功能进行介绍，方便新手快速掌握这里命令行工具的基本选项与参数。
 
 # 0x01 模拟请求利器cURL
-[cURL](https://curl.haxx.se/)支持的通信协议有FTP、FTPS、HTTP、HTTPS、IMAP、POP3、SMTP等。除了命令行工具，cURL还包含了用于程序开发的libcurl, 可以与许多语言相结合，如PHP、C++等。这里主要介绍cURL作为命令行工具在HTTP、HTTPS等协议中的运用。
+支持的通信协议有FTP、FTPS、HTTP、HTTPS、IMAP、POP3、SMTP等。除了命令行工具，cURL还包含了用于程序开发的libcurl, 可以与许多语言相结合，如PHP、C++等。这里主要介绍cURL作为命令行工具在HTTP、HTTPS等协议中的运用。
 
 <!--more-->
 
