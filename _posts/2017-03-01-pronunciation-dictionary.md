@@ -18,7 +18,8 @@ tags:
 
 # 0x01 URL地址分析
 
-以单词[cat](https://www.merriam-webster.com/dictionary/cat)为例，它的URL为`https://www.merriam-webster.com/dictionary/cat`  
+以单词[cat](https://www.merriam-webster.com/dictionary/cat)为例，发音页面的URL为：
+`https://www.merriam-webster.com/dictionary/cat`  
 打开这个单词页面以后，选择Chrome开发者工具，选择Network标签页，抓包得到单词cat的mp3地址为：  
 `https://media.merriam-webster.com/audio/prons/en/us/mp3/c/cat00001.mp3`  
 虽然不费吹灰之力得到单词cat的音频地址，下一步仍然要进一步分析这个URL是如何生成的。打开Chrome开发者工具，在Elements标签页，查看单词发音部分对应的DOM节点，找到如下的一段代码：  
