@@ -42,7 +42,7 @@ tags:
 
 # 0x02 用Shell脚本爬取数据
 
-通过上述的基本分析，就可以写一个程序实现批量抓取单词音频了。那究竟抓哪些单词好呢？据我所知，有几个著名的单词表，比如General Service List，Academic Words List，Ogden’s Basic English Word List等。 这里就选用GSL（General Service List）作为测试，将GSL的所有单词按行存为一个文本，命名为[gsl.txt](/blog/images/gsl.txt。
+通过上述的基本分析，就可以写一个程序实现批量抓取单词音频了。那究竟抓哪些单词好呢？据我所知，有几个著名的单词表，比如General Service List，Academic Words List，Ogden’s Basic English Word List等。 这里就选用GSL（General Service List）作为测试，将GSL的所有单词按行存为一个文本，命名为[gsl.txt](/blog/images/gsl.txt)
 
 利用上述的URL地址分析，Shell脚本写了一段爬取的脚本如下：
 	
